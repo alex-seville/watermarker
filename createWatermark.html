@@ -75,7 +75,7 @@ canvas2.width=w;
 
              var show = canvas5.cloneNode(true);
              var hide = resImg.cloneNode(true);
-             document.body.appendChild(canvas5);
+            
              document.body.replaceChild(canvas5,resImg);
 
             window.onblur = function(){
@@ -86,6 +86,8 @@ canvas2.width=w;
                 document.body.replaceChild(canvas5,resImg);
 
             };
+            canvas5.toDataURL = function(){return null;};
+            canvas5.getContext = function(){return null;};
 
          };
          img3.src=pngBase64;
