@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head></head>
+<body>
+<!-- include these files -->
+<script type="text/javascript" src="binaryajax.js"></script>
+<script type="text/javascript" src="imageinfo.js" ></script>
+<!-- optionally include exif.js for Exif support -->
+<script type="text/javascript" src="exif.js" ></script>
+<script>
+// URL of the image (must be on the same domain!)
+//var file = "image1.jpg";
+var file2 = "image2.jpg";
+// define your own callback function
+function mycallback() {
+   // either call the ImageInfo.getAllFields([file]) function which returns an object holding all the info
+  
+   // or call ImageInfo.getField([file], [field]) to get a specific field
+   var data = ImageInfo.getAllFields(file2);
+   console.log("data:"+data);
+   console.log(
+       "Comment: " + data.comment + ", dimensions : " + data.width + "x" + data.height
+   );
+   alert(data.comment);
+}
+// finally, load the data
+//ImageInfo.loadInfo(file, mycallback);
+ImageInfo.loadInfo(file2, mycallback);
+</script>
+</body>
+</html>

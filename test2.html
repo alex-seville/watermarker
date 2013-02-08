@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head></head>
+<body>
+    <canvas id="canvas" width="1244" height="1244"></canvas>
+<script>
+var ctx = document.getElementById('canvas').getContext('2d');
+var img = new Image();
+img.src = 'image1.jpg';
+img.onload = function(){
+  // execute drawImage statements here
+  ctx.drawImage(img,0,0);
+  var imageData = ctx.createImageData(1244, 1244);
+  for (i = 0; i < 10000; i++) {
+    x = Math.random() * 1244 | 0; // |0 to truncate to Int32
+    y = Math.random() * 1244 | 0;
+    r = Math.random() * 256 | 0;
+    g = Math.random() * 256 | 0;
+    b = Math.random() * 256 | 0;
+    setPixel(imageData, x, y, r, g, b, 255); // 255 opaque
+  }
+  ctx.putImageData(imageData, 0, 0);
+};
+
+function setPixel(imageData, x, y, r, g, b, a) {
+    index = (x + y * imageData.width) * 4;
+    imageData.data[index+0] = r;
+    imageData.data[index+1] = g;
+    imageData.data[index+2] = b;
+    imageData.data[index+3] = a;
+}
+</script>
+</body></html>
